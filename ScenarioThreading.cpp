@@ -448,6 +448,7 @@ void workerForScenario(const char* filename) {
 }
 
 int main() {
+    auto startTime = std::chrono::high_resolution_clock::now();
     std::vector<std::string> files;
     for (const auto& entry : fs::directory_iterator("xmls/")) {
         if (entry.is_regular_file() && entry.path().extension() == ".xml")
@@ -461,6 +462,7 @@ int main() {
 
     for (auto& th : threads)
         th.join();
+    auto end = std::chrono::high_resolution_clock::now();
 
     long double totalParse = 0, totalCompute = 0;
     int totalViolations = 0, totalCollisions = 0, totalCars = 0;
@@ -473,13 +475,15 @@ int main() {
         totalCollisions += r.collisions;
         totalCars       += r.cars;
     }
-
     std::cout << "Parsed " << files.size() << " scenarios in parallel." << std::endl;
     std::cout << "Average parse time: " << (totalParse / files.size()) << " ms\n";
     std::cout << "Average compute time: " << (totalCompute / files.size()) << " ms\n";
     std::cout << "Total cars: " << totalCars << "\n";
     std::cout << "Violations: " << totalViolations << "\n";
     std::cout << "Collisions: " << totalCollisions << "\n";
+    std::cout << "Average violations per Scenario: " << (1.0 * totalViolations / files.size()) << "\n";
+    std::cout << "Average collisions per Scenario: " << (1.0 * totalCollisions / files.size()) << "\n";
+    std::cout << "Total time: " << std::chrono::duration<long double, std::milli>(end - startTime).count() << " ms\n";
 
     return 0;
 }
