@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
-#include "/home/omar_maher/vcpkg/buildtrees/tinyxml2/src/11.0.0-f00fa8a9d2.clean/tinyxml2.h"
+#include "tinyxml2.h"
 #include <cmath>
 #include <map>
 #include <thread>
@@ -449,7 +449,7 @@ void workerForScenario(const char* filename) {
 
 int main() {
     std::vector<std::string> files;
-    for (const auto& entry : fs::directory_iterator("/home/omar_maher/commonroadRl/FIX_commonroad_rl-master/commonroad_rl/tutorials/data/inD-dataset-v1.0/xmls/")) {
+    for (const auto& entry : fs::directory_iterator("xmls/")) {
         if (entry.is_regular_file() && entry.path().extension() == ".xml")
             files.push_back(entry.path().string()); // store string
     }
