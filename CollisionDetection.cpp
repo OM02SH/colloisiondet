@@ -9,8 +9,8 @@ Email: omar.shaat@tum.de
 #include <utility>
 #include <cmath>
 #include "tinyxml2.h"
-#include "vcpkg/packages/tbb_x64-linux/include/tbb/parallel_for.h"
-#include "vcpkg/packages/tbb_x64-linux/include/tbb/blocked_range.h"
+#include "tbb/parallel_for.h"
+#include "tbb/blocked_range.h"
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/point_xy.hpp>
 #include <boost/geometry/geometries/polygon.hpp>
