@@ -1,3 +1,9 @@
+"""
+Collision Detection for Commonroad Scenarios 
+Author: [Omar Shaat/OM02SH]
+Email: omar.shaat@tum.de
+"""
+    
 #include <iostream>
 #include <vector>
 #include <utility>
